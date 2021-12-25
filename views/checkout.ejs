@@ -1,0 +1,178 @@
+<% if ( ifget ){ %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<main>
+		<%- include('../partials/header'); %>
+		<form class="checkout" id="checkout" action="/checkout/form" method="post">
+			<button type="button" class="checkout__map">Карта</button>
+			<div class="checkout__row">
+				<div class="checkout__col">
+					<label for="address">Адрес доставки</label>
+					<input type="text" id="address" name="Адрес" required>
+				</div>
+			</div>
+			<div class="checkout__row">
+				<div class="checkout__col-4">
+					<label for="address_det_1">Подъезд</label>
+					<input type="text" id="address_det_1" name="Подъезд" maxlength="2">
+				</div>
+				<div class="checkout__col-4">
+					<label for="address_det_2">Домофон</label>
+					<input type="text" id="address_det_2" name="Домофон" maxlength="4">
+				</div>
+				<div class="checkout__col-4">
+					<label for="address_det_3">Кв/офис</label>
+					<input type="text" id="address_det_3" name="Кв.офис" maxlength="5" required>
+				</div>
+				<div class="checkout__col-4">
+					<label for="address_det_4">Этаж</label>
+					<input type="text" id="address_det_4" name="Этаж" maxlength="3">
+				</div>
+			</div>
+			<div class="checkout__row">
+				<div class="checkout__col">
+					<label for="phone">Номер телефона</label>
+					<input type="text" value="+7" id="phone" name="Телефон" maxlength="20" required>
+				</div>
+			</div>
+			<div class="checkout__row">
+				<div class="checkout__col">
+					<label for="comment">Комментарий</label>
+					<input type="text" id="comment" name="Комментарий" maxlength="30">
+				</div>
+			</div>
+			<div class="checkout__payment">
+				<div class="checkout__title">Способ оплаты</div>
+				<div class="selector">
+						<label><input type="radio" id="cash" value="Наличными" name="Оплата" checked><span>Наличными</span></label>
+						<label><input type="radio" id="card" value="Картой" name="Оплата"><span>Картой</span></label>
+						<div class="selector__slider"></div>
+				</div>
+				<!-- <div class="toggle">
+					<label class="switch">
+						<input type="checkbox" name="is_card" value="Карта">
+						<div class="slider"></div>
+						<span class="cash">Наличными</span><span class="card">Картой</span>
+					</label>
+				</div> -->
+			</div>
+			<div id="map" class="map"></div>
+			<div class="footer-total">
+				<div class="footer-total__checkout">
+					<div class="footer-total__price-wrapper">
+						<div class="footer-total__cart-total-label">Стоимость</div>
+						<div class="footer-total__cart-total">
+							<span class="footer-total__cart-total-value"><%= cart_total %></span>
+							<span class="currency">&#8381;</span>
+						</div>
+					</div>
+					<div class="footer-total__price-wrapper">
+						<div class="footer-total__delivery-label">Доставка</div>
+						<div class="footer-total__delivery">
+							<span class="footer-total__delivery-value"><%= delivery_price %></span>
+							<span class="currency">&#8381;</span>
+						</div>
+					</div>
+				</div>
+				<div class="footer-total__price-wrapper">
+					<div class="footer-total__price-label">Итого</div>
+					<div class="footer-total__price">
+                        <span class="footer-total__price-value"><%= cart_total + delivery_price %></span>
+                        <span class="currency">&#8381;</span>
+                    </div>
+				</div>
+				<button type="submit" class="checkout__submit">Оплатить</button>
+			</div>
+		</form>
+	</main>
+		<%- include('../partials/script'); %>
+	</body>
+</html>
+<% } else { %>
+	<%- include('../partials/header'); %>
+	<form class="checkout" id="checkout" action="/checkout/form" method="post">
+		<button type="button" class="checkout__map">Карта</button>
+		<div class="checkout__row">
+			<div class="checkout__col">
+				<label for="address">Адрес доставки</label>
+				<input type="text" id="address" name="Адрес" required>
+			</div>
+		</div>
+		<div class="checkout__row">
+			<div class="checkout__col-4">
+				<label for="address_det_1">Подъезд</label>
+				<input type="text" id="address_det_1" name="Подъезд" maxlength="2">
+			</div>
+			<div class="checkout__col-4">
+				<label for="address_det_2">Домофон</label>
+				<input type="text" id="address_det_2" name="Домофон" maxlength="4">
+			</div>
+			<div class="checkout__col-4">
+				<label for="address_det_3">Кв/офис</label>
+				<input type="text" id="address_det_3" name="Кв.офис" maxlength="5" required>
+			</div>
+			<div class="checkout__col-4">
+				<label for="address_det_4">Этаж</label>
+				<input type="text" id="address_det_4" name="Этаж" maxlength="3">
+			</div>
+		</div>
+		<div class="checkout__row">
+			<div class="checkout__col">
+				<label for="phone">Номер телефона</label>
+				<input type="text" id="phone" name="Телефон" required>
+			</div>
+		</div>
+		<div class="checkout__row">
+			<div class="checkout__col">
+				<label for="comment">Комментарий</label>
+				<input type="text" id="comment" name="Комментарий">
+			</div>
+		</div>
+		<div class="checkout__payment">
+			<div class="checkout__title">Способ оплаты</div>
+			<div class="selector">
+					<label><input type="radio" id="cash" value="Наличными" name="Оплата" checked><span>Наличными</span></label>
+					<label><input type="radio" id="card" value="Картой" name="Оплата"><span>Картой</span></label>
+					<div class="selector__slider"></div>
+			</div>
+			<!-- <div class="toggle">
+				<label class="switch">
+					<input type="checkbox" name="is_card" value="Карта">
+					<div class="slider"></div>
+					<span class="cash">Наличными</span><span class="card">Картой</span>
+				</label>
+			</div> -->
+		</div>
+		<div id="map" class="map"></div>
+		<div class="footer-total">
+			<div class="footer-total__checkout">
+				<div class="footer-total__price-wrapper">
+					<div class="footer-total__cart-total-label">Стоимость</div>
+					<div class="footer-total__cart-total">
+						<span class="footer-total__cart-total-value"><%= cart_total %></span>
+						<span class="currency">&#8381;</span>
+					</div>
+				</div>
+				<div class="footer-total__price-wrapper">
+					<div class="footer-total__delivery-label">Доставка</div>
+					<div class="footer-total__delivery">
+						<span class="footer-total__delivery-value"><%= delivery_price %></span>
+						<span class="currency">&#8381;</span>
+					</div>
+				</div>
+			</div>
+			<div class="footer-total__price-wrapper">
+				<div class="footer-total__price-label">Итого</div>
+				<div class="footer-total__price">
+					<span class="footer-total__price-value"><%= cart_total + delivery_price %></span>
+					<span class="currency">&#8381;</span>
+				</div>
+			</div>
+			<button type="submit" class="checkout__submit">Оплатить</button>
+		</div>
+	</form>
+<% }; %>

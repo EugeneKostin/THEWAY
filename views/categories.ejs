@@ -1,0 +1,34 @@
+<% if ( ifget ){ %>
+  	<!DOCTYPE html>
+  	<html>
+		<head>
+			<%- include('../partials/head'); %>
+		</head>
+		<body class="hidden">
+			<main>
+				<%- include('../partials/header'); %>
+				<div class="menu">
+				<% for (var i=0; i < category_arr.length; i++) { %>
+					<div data-url="/categories/<%= category_arr[i].slug %>" class="menu__item">	
+						<img src="/images/categories/<%= category_arr[i].image %>" alt="" class="menu__item-img">
+						<h2 class="menu__item-header"><%= category_arr[i].title %></h2>
+					</div>
+				<%} %>
+				</div>
+			<%- include('../partials/bottom_nav'); %>
+			</main>
+			<%- include('../partials/script'); %>
+		</body>
+  	</html>
+<% } else { %>
+	<%- include('../partials/header'); %>		
+	<div class="menu">
+		<% for (var i=0; i < category_arr.length; i++) { %>
+			<div data-url="/categories/<%= category_arr[i].slug %>" class="menu__item">	
+				<img src="/images/categories/<%= category_arr[i].image %>" alt="" class="menu__item-img">
+				<h2 class="menu__item-header"><%= category_arr[i].title %></h2>
+			</div>
+		<%} %>
+	</div>
+	<%- include('../partials/bottom_nav'); %>
+<%}; %>

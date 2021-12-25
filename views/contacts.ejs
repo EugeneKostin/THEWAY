@@ -1,0 +1,40 @@
+<% if ( ifget ){ %>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <%- include('../partials/head'); %>
+        </head>
+        <body>
+            <main>
+            <%- include('../partials/header'); %>
+            <div class="contacts">
+                <div class="contacts__info">
+                    <div class="contacts__time">Время работы: с 12:00 до 00:00</div>
+                    <div class="contacts__address">Адрес: г. Новороссийск, ул. Мира 12</div>
+                </div>
+                <div id="contacts__map" class="contacts__map"></div>
+                <div class="contacts__controls">
+                    <a href="tel:88005553535">Позвонить</a>
+                    <a href="mailto:google@gmail.com">Написать</a>
+                </div>
+            </div>
+            <%- include('../partials/bottom_nav'); %>
+            </main>
+        <%- include('../partials/script'); %>
+        </body>
+    </html>
+<% } else { %>
+        <%- include('../partials/header'); %>   
+        <div class="contacts">
+            <div class="contacts__info">
+                <div class="contacts__time">Время работы: с 12:00 до 00:00</div>
+                <div class="contacts__address">Адрес: г. Новороссийск, ул. Мира 12</div>
+            </div>
+            <div id="contacts__map" class="contacts__map"></div>
+            <div class="contacts__controls">
+                <a href="tel:88005553535">Позвонить</a>
+                <a href="mailto:google@gmail.com">Написать</a>
+            </div>
+        </div>
+        <%- include('../partials/bottom_nav'); %>
+<% }; %>

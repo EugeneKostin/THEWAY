@@ -1,0 +1,107 @@
+<% if ( ifget ){ %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+        <% if( products.length > 0 ){ %>
+            <main>
+            <%- include('../partials/header'); %>
+            <div class="dish dish_incart">
+                <% products.forEach( (product) => { %>
+                    <% if( product.item ){ %>
+                        <div class="dish__item dish__item_incart">
+                            <div class="dish__content">
+                                <h2 class="dish__title"><%= product.item.title %></h2>
+                                <div class="dish__weight"><%= product.item.weight %>&nbspг.</div>
+                                <div class="dish__controls">
+                                    <button class="dish__add" data-action="add" value="<%= product.item.id %>"></button>
+                                    <span class="dish__count"><%= product.quantity %></span>
+                                    <button class="dish__remove" data-action="remove" disabled="disabled" value="<%= product.item.id %>"></button>
+                                    <div class="dish__price__incart">
+                                        <span class="dish__price"><%= product.price %></span>
+                                        <span class="currency">&#8381;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dish__img dish__img_incart">
+                                <img src="/images/<%= product.item.image %>" alt="изображение <%= product.item.title %>">
+                            </div>
+                        </div>
+                    <% }; %>
+                <% }); %> 
+            </div>
+            <div class="footer-total">
+                <div class="footer-total__price-wrapper">
+                    <div class="footer-total__price-label">Стоимость</div>
+                    <div class="footer-total__price">
+                        <span class="footer-total__price-value"><%= totalPrice %></span>
+                        <span class="currency">&#8381;</span>
+                    </div>
+                </div>
+                <button class="footer-total__nav-button" data-url="/checkout">Оформить заказ</button>
+            </div>
+            </main>
+            <% } else { %>
+                <main>
+                    <%- include('../partials/header'); %>
+                    <div class="cart-empty">
+                        <img src="/images/empty-basket.png" alt="" class="cart-empty__img">
+                        <div class="cart-empty__header">Корзина пуста</div>
+                        <div class="cart-empty__subheader">Вернитесь к меню и добавьте желаемые блюда</div>
+                    </div>
+                    <%- include('../partials/bottom_nav'); %>
+                </main>
+            <% } %>
+    
+    <%- include('../partials/script'); %>
+	</body>
+</html>
+<% } else { %>
+    <% if( products.length > 0 ){ %>
+            <%- include('../partials/header'); %>   
+            <div class="dish dish_incart">
+            <% products.forEach( (product) => { %>
+                <% if( product.item ){ %>
+                    <div class="dish__item dish__item_incart">
+                        <div class="dish__content">
+                            <h2 class="dish__title"><%= product.item.title %></h2>
+                            <div class="dish__weight"><%= product.item.weight %>&nbspг.</div>
+                            <div class="dish__controls">
+                                <button class="dish__add" data-action="add" value="<%= product.item.id %>"></button>
+                                <span class="dish__count"><%= product.quantity %></span>
+                                <button class="dish__remove" data-action="remove" disabled="disabled" value="<%= product.item.id %>"></button>
+                                <div class="dish__price__incart">
+                                    <span class="dish__price"><%= product.price %></span>
+                                    <span class="currency">&#8381;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dish__img dish__img_incart">
+                            <img src="/images/<%= product.item.image %>" alt="изображение <%= product.item.title %>">
+                        </div>
+                    </div>
+                <% }; %>
+            <% }); %> 
+            </div>
+            <div class="footer-total">
+                <div class="footer-total__price-wrapper">
+                    <div class="footer-total__price-label">Стоимость</div>
+                    <div class="footer-total__price">
+                        <span class="footer-total__price-value"><%= totalPrice %></span>
+                        <span class="currency">&#8381;</span>
+                    </div>
+                </div>
+                <button class="footer-total__nav-button" data-url="/checkout">Оформить заказ</button>
+            </div>
+            <% } else { %>
+                <%- include('../partials/header'); %>
+                <div class="cart-empty">
+                    <img src="/images/empty-basket.png" alt="" class="cart-empry__img">
+                    <div class="cart-empty__header">Корзина пуста</div>
+                    <div class="cart-empty__subheader">Вернитесь к меню и добавьте желаемые блюда</div>
+                </div>
+                <%- include('../partials/bottom_nav'); %>
+            <% } %>
+<% }; %>

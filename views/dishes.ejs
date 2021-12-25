@@ -1,0 +1,58 @@
+<% if ( ifget ){ %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<main>
+		<%- include('../partials/header'); %>
+		<div class="dish">
+		<% for(var i=0; i < dishes_arr.length; i++) {%>
+			<div class="dish__item">
+				<div class="dish__content">
+					<h2 class="dish__title"><%= dishes_arr[i].title %></h2>
+					<div class="dish__weight"><%= dishes_arr[i].weight %>&nbspг.</div>
+					<div class="dish__descr"><%= dishes_arr[i].desc %></div>
+					<div class="dish__controls">
+						<button class="dish__add" data-action="add" value="<%= dishes_arr[i].id %>"></button>
+						<span class="dish__count"><%= dishes_arr[i].quantity %></span>
+						<button class="dish__remove" data-action="remove" disabled="disabled" value="<%= dishes_arr[i].id %>"></button>
+						<span class="dish__price left-moved"><%= dishes_arr[i].price %>&nbsp&#8381;</span>
+					</div>
+				</div>
+				<div class="dish__img">
+					<img src="/images/<%= dishes_arr[i].image %>" alt="изображение <%= dishes_arr[i].title %>">
+				</div>
+			</div>
+			<%} %>
+		</div>
+			<%- include('../partials/bottom_nav'); %>
+		</main>
+		<%- include('../partials/script'); %>
+	</body>
+</html>
+<% } else { %>
+	<%- include('../partials/header'); %>
+	<div class="dish">
+	<% for(var i=0; i < dishes_arr.length; i++) {%>
+		<div class="dish__item">
+			<div class="dish__content">
+				<h2 class="dish__title"><%= dishes_arr[i].title %></h2>
+				<div class="dish__weight"><%= dishes_arr[i].weight %>&nbspг.</div>
+				<div class="dish__descr"><%= dishes_arr[i].desc %></div>
+				<div class="dish__controls">
+					<button class="dish__add" data-action="add" value="<%= dishes_arr[i].id %>"></button>
+					<span class="dish__count"><%= dishes_arr[i].quantity %></span>
+					<button class="dish__remove" data-action="remove" disabled="disabled" value="<%= dishes_arr[i].id %>"></button>
+					<span class="dish__price left-moved"><%= dishes_arr[i].price %>&nbsp&#8381;</span>
+				</div>
+			</div>
+			<div class="dish__img">
+				<img src="/images/<%= dishes_arr[i].image %>" alt="изображение <%= dishes_arr[i].title %>">
+			</div>
+		</div>
+	<%} %>
+	</div>
+	<%- include('../partials/bottom_nav'); %>
+<%}; %>
